@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram } from "lucide-react";
+import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Star, Quote } from "lucide-react";
 import logo from "@/assets/allin-logo.png.asset.json";
-import { nav, studio, glofox, faqs, type Plan } from "@/lib/site";
+import { nav, studio, glofox, faqs, reviews, type Plan } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Btn = { href: string; children: ReactNode; variant?: "solid" | "light" | "outline" | "ghostLight"; className?: string };
