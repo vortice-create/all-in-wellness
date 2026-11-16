@@ -45,17 +45,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Review proof */}
-      <section aria-labelledby="reviews" className="section-y bg-sky-tint">
-        <div className="container-site">
-          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-            <SectionHead eyebrow="Google reviews" title="What members are saying" intro="Real reviews from clients across Babylon and the South Shore." />
-            <PillLink href={studio.googleReviews} variant="outline" className="shrink-0 py-2">Read all reviews on Google</PillLink>
-          </div>
-          <div className="mt-10"><ReviewGrid /></div>
-        </div>
-      </section>
-
       {/* Benefit strip */}
       <section className="section-y">
         <div className="container-site">
@@ -145,6 +134,17 @@ function Home() {
             </ul>
             <PillLink href="/about" variant="outline" className="mt-6">Read Judi's story</PillLink>
           </div>
+        </div>
+      </section>
+
+      {/* Review proof */}
+      <section aria-labelledby="reviews" className="section-y bg-sky-tint">
+        <div className="container-site">
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+            <SectionHead eyebrow="Google reviews" title="What members are saying" intro="Real reviews from clients across Babylon and the South Shore." />
+            <PillLink href={studio.googleReviews} variant="outline" className="shrink-0 py-2">Read all reviews on Google</PillLink>
+          </div>
+          <div className="mt-10"><ReviewGrid /></div>
         </div>
       </section>
 
