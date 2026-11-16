@@ -172,9 +172,7 @@ export function BookingCTA() {
   return (
     <section className="section-y">
       <div className="container-site">
-        <div className="relative isolate overflow-hidden rounded-[22px] bg-navy px-6 py-14 text-center text-navy-foreground md:px-16">
-          <div aria-hidden className="absolute -right-16 -top-16 -z-10 size-64 rounded-full bg-peri-deep/40" />
-          <div aria-hidden className="absolute -bottom-20 -left-10 -z-10 size-56 rounded-full bg-mint/15" />
+        <div className="cta-gradient relative isolate overflow-hidden rounded-[22px] px-6 py-14 text-center text-navy-foreground md:px-16">
           <p className="eyebrow text-mint">Your first step</p>
           <h2 className="mx-auto mt-3 max-w-2xl text-3xl md:text-5xl">Three classes. Two weeks. <em className="font-normal italic">$99.</em></h2>
           <p className="mx-auto mt-4 max-w-lg text-navy-foreground/85">Try Reformer Pilates and Interval Training in Babylon with expert, physical-therapy-informed guidance.</p>
