@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Star, CalendarDays, Instagram, Award, MapPin, Phone } from "lucide-react";
-import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA } from "@/components/site/ui";
+import { CalendarDays, Instagram, Award, MapPin, Phone } from "lucide-react";
+import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA, ReviewGrid } from "@/components/site/ui";
 import truemedLogo from "@/assets/truemed-logo.png.asset.json";
 import { classes, glofox, introOffer, packages, memberships, privates, photos, studio, businessJsonLd, faqJsonLd, ld, pageHead } from "@/lib/site";
 
