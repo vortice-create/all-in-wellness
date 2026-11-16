@@ -36,13 +36,20 @@ function ContactPage() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
-    const parsed = schema.safeParse({ ...data, phone: data.phone || undefined, interest: data.interest || undefined });
-    if (!parsed.success) return toast.error(parsed.error.issues[0].message);
+    const fd = new FormData(form);
+    const get = (k: string) => String(fd.get(k) ?? "");
+    const parsed = schema.safeParse({ name: get("name"), email: get("email"), message: get("message"), phone: get("phone") || undefined, interest: get("interest") || undefined });
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0]?.message ?? "Please check the form");
+      return;
+    }
     setSending(true);
     const { error } = await supabase.from("contact_submissions").insert(parsed.data as never);
     setSending(false);
-    if (error) return toast.error("Sorry, that didn't send. Please call or email us.");
+    if (error) {
+      toast.error("Sorry, that didn't send. Please call or email us.");
+      return;
+    }
     form.reset();
     setSent(true);
   }
@@ -84,7 +91,7 @@ function ContactPage() {
             </div>
             <div className="rounded-[20px] bg-mint-tint p-6">
               <h2 className="flex items-center gap-2 text-2xl"><Car className="size-6 text-primary" aria-hidden />Parking</h2>
-              <p className="mt-3 text-muted-foreground">{faqs[3].a}</p>
+              <p className="mt-3 text-muted-foreground">{faqs[3]?.a}</p>
             </div>
             <iframe title="Map to All In Health & Wellness, 1 Shore Road, Babylon" src={studio.mapEmbed} loading="lazy" className="aspect-[4/3] w-full rounded-[20px] border-0" />
             <PillLink href={studio.mapsDirections} variant="outline" className="w-full">Get directions</PillLink>
