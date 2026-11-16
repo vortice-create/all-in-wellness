@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Studio facts, prices and Glofox URLs live in src/lib/site.ts; pages and JSON-LD read from it so prices stay in one place.
+- Shared marketing sections live in src/components/site/ui.tsx; header/footer are mounted once in __root.
+- Contact form inserts into public.contact_submissions (anon insert-only RLS); no read access from the browser.

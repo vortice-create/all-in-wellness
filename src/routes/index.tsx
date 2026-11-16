@@ -19,7 +19,7 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate overflow-hidden text-navy-foreground">
+      <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
         <img src={photos.studio} alt="Reformer studio at All In Health & Wellness in Babylon, NY" className="absolute inset-0 -z-20 size-full object-cover" fetchPriority="high" />
         <div className="hero-overlay absolute inset-0 -z-10" />
         <div className="container-site grid items-end gap-8 py-12 md:grid-cols-[1.4fr_1fr] md:py-24">

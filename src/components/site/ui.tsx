@@ -115,7 +115,7 @@ export function SectionHead({ eyebrow, title, intro, center }: { eyebrow?: strin
 
 export function PageHero({ eyebrow, title, intro, img, children }: { eyebrow: string; title: ReactNode; intro: string; img: string; children?: ReactNode }) {
   return (
-    <section className="relative isolate overflow-hidden text-navy-foreground">
+    <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
       <img src={img} alt="" className="absolute inset-0 -z-20 size-full object-cover" />
       <div className="hero-overlay absolute inset-0 -z-10" />
       <div className="container-site py-16 md:py-24">
