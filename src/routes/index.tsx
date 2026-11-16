@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Star, CalendarDays, Instagram, Award, MapPin, Phone } from "lucide-react";
-import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA } from "@/components/site/ui";
+import { CalendarDays, Instagram, Award, MapPin, Phone } from "lucide-react";
+import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA, ReviewGrid } from "@/components/site/ui";
 import truemedLogo from "@/assets/truemed-logo.png.asset.json";
 import { classes, glofox, introOffer, packages, memberships, privates, photos, studio, businessJsonLd, faqJsonLd, ld, pageHead } from "@/lib/site";
 
@@ -46,13 +46,13 @@ function Home() {
       </section>
 
       {/* Review proof */}
-      <section aria-labelledby="reviews" className="border-b bg-sky-tint">
-        <div className="container-site flex flex-col items-start justify-between gap-4 py-7 md:flex-row md:items-center">
-          <div className="flex items-center gap-3">
-            <div className="flex text-primary" aria-hidden>{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="size-5 fill-current" />)}</div>
-            <h2 id="reviews" className="font-sans text-base font-semibold">Reviewed on Google by clients across Babylon and the South Shore</h2>
+      <section aria-labelledby="reviews" className="section-y bg-sky-tint">
+        <div className="container-site">
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+            <SectionHead eyebrow="Google reviews" title="What members are saying" intro="Real reviews from clients across Babylon and the South Shore." />
+            <PillLink href={studio.googleReviews} variant="outline" className="shrink-0 py-2">Read all reviews on Google</PillLink>
           </div>
-          <PillLink href={studio.googleReviews} variant="outline" className="py-2">Read our Google reviews</PillLink>
+          <div className="mt-10"><ReviewGrid /></div>
         </div>
       </section>
 

@@ -62,6 +62,11 @@ export const classes = [
   { name: "Interval Training", img: photos.interval, alt: "Interval training class in the All In studio", body: "High-energy rounds of cardio and strength that build endurance and muscle in a fun, fast-paced setting. Suitable for all fitness levels." },
 ];
 
+export const reviews = [
+  { quote: "I can't say enough good things about this studio!", name: "Katie R.", detail: "Welcomed from her very first class — the small-group instruction never feels generic." },
+  { quote: "Hands down the best Pilates class I've ever taken.", name: "Bridgette Y.", detail: "Legs shaking ten minutes in — knowledgeable, friendly, and a real workout." },
+];
+
 export const faqs = [
   { q: "Is Reformer Pilates OK for complete beginners?", a: "Yes. Every class is taught for all levels, and instructors offer modifications. Led by Dr. Judi Luttieri, a Doctor of Physical Therapy, the studio is a supportive, no-judgment space for first-timers." },
   { q: "How much is the intro offer?", a: "New clients get 3 classes for $99, to be used within 2 weeks. After that, single classes are $45, or choose a class pack or membership." },

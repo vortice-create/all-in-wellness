@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram } from "lucide-react";
+import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Star, Quote } from "lucide-react";
 import logo from "@/assets/allin-logo.png.asset.json";
-import { nav, studio, glofox, faqs, type Plan } from "@/lib/site";
+import { nav, studio, glofox, faqs, reviews, type Plan } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Btn = { href: string; children: ReactNode; variant?: "solid" | "light" | "outline" | "ghostLight"; className?: string };
@@ -164,6 +164,24 @@ export function GlofoxEmbed({ src, title, height = 900 }: { src: string; title: 
         <PillLink href={src} variant="outline" className="py-1.5 text-xs">Open in new tab</PillLink>
       </div>
       <iframe src={src} title={title} loading="lazy" className="block w-full" style={{ height }} allow="payment" />
+    </div>
+  );
+}
+
+export function ReviewGrid() {
+  return (
+    <div className="grid gap-6 md:grid-cols-2">
+      {reviews.map((r) => (
+        <figure key={r.name} className="flex flex-col rounded-[20px] border bg-card p-7 shadow-soft">
+          <div className="flex items-center justify-between">
+            <div className="flex text-primary" aria-label="5 out of 5 stars">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="size-4 fill-current" />)}</div>
+            <Quote className="size-6 text-peri" aria-hidden />
+          </div>
+          <blockquote className="mt-4 font-serif text-2xl leading-snug text-navy">&ldquo;{r.quote}&rdquo;</blockquote>
+          <p className="mt-3 text-sm text-muted-foreground">{r.detail}</p>
+          <figcaption className="mt-auto pt-5 text-sm font-semibold">{r.name} <span className="font-normal text-muted-foreground">· Google Review</span></figcaption>
+        </figure>
+      ))}
     </div>
   );
 }
