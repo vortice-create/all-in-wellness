@@ -16,7 +16,7 @@ export function PillLink({ href, children, variant = "solid", className }: Btn) 
   }[variant];
   const cls = cn("inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-bold tracking-wide transition-colors", styles, className);
   if (ext) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{children}<ArrowUpRight className="size-4" aria-hidden /><span className="sr-only"> (opens in new tab)</span></a>;
-  return <Link to={href} className={cls}>{children}</Link>;
+  return <Link to={href as never} className={cls}>{children}</Link>;
 }
 
 export function Header() {
