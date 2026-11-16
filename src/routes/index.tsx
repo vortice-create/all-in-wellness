@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star, CalendarDays, Instagram, Award, MapPin, Phone } from "lucide-react";
 import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA } from "@/components/site/ui";
+import truemedLogo from "@/assets/truemed-logo.png.asset.json";
 import { classes, glofox, introOffer, packages, memberships, privates, photos, studio, businessJsonLd, faqJsonLd, ld, pageHead } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -113,6 +114,20 @@ function Home() {
               <ul className="mt-4 space-y-2 text-sm">{privates.map((p) => <li key={p.name} className="flex justify-between gap-2"><span>{p.name}</span><strong>{p.price}</strong></li>)}</ul>
               <PillLink href="/pricing#private" variant="outline" className="mt-6 w-full">View private sessions</PillLink>
             </article>
+          </div>
+        </div>
+      </section>
+
+      {/* HSA/FSA via Truemed */}
+      <section aria-labelledby="hsa-fsa" className="section-y pt-0">
+        <div className="container-site">
+          <div className="flex flex-col items-start gap-6 rounded-[22px] border bg-card p-8 shadow-soft md:flex-row md:items-center md:justify-between md:p-10">
+            <div className="max-w-2xl">
+              <img src={truemedLogo.url} alt="Truemed" loading="lazy" width={173} height={80} className="h-12 w-auto" />
+              <h2 id="hsa-fsa" className="mt-4 text-3xl md:text-4xl">Use your <em className="font-normal italic">HSA/FSA</em> funds</h2>
+              <p className="mt-3 text-muted-foreground">Members keep paying as usual, and now you can use pre-tax HSA/FSA funds to cover it.</p>
+            </div>
+            <PillLink href="https://app.truemed.com/qualify/tm_qual_bqqq7pf5zs" className="shrink-0">Check if you qualify</PillLink>
           </div>
         </div>
       </section>
