@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Star, Quote } from "lucide-react";
+import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Facebook, Play, Star, Quote } from "lucide-react";
 import logo from "@/assets/allin-logo.png.asset.json";
-import { nav, studio, glofox, faqs, reviews, type Plan } from "@/lib/site";
+import { nav, studio, glofox, faqs, reviews, type Plan, type IgPost } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Btn = { href: string; children: ReactNode; variant?: "solid" | "light" | "outline" | "ghostLight"; className?: string };
@@ -72,6 +72,7 @@ export function Footer() {
             <p><a className="flex gap-2 hover:text-mint" href={studio.phoneHref}><Phone className="size-4 mt-1" aria-hidden />{studio.phone}</a></p>
             <p><a className="flex gap-2 hover:text-mint" href={`mailto:${studio.email}`}><Mail className="size-4 mt-1" aria-hidden />{studio.email}</a></p>
             <p><a className="flex gap-2 hover:text-mint" href={studio.instagram} target="_blank" rel="noopener noreferrer"><Instagram className="size-4 mt-1" aria-hidden />@{studio.instagramHandle}</a></p>
+            <p><a className="flex gap-2 hover:text-mint" href={studio.facebook} target="_blank" rel="noopener noreferrer"><Facebook className="size-4 mt-1" aria-hidden />Facebook</a></p>
           </address>
         </div>
         <div>
@@ -201,5 +202,30 @@ export function BookingCTA() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function InstagramGrid({ posts }: { posts: IgPost[] }) {
+  if (!posts.length)
+    return (
+      <div className="soft-gradient flex flex-col items-center rounded-[22px] border px-6 py-12 text-center">
+        <Instagram className="size-8 text-primary" aria-hidden />
+        <p className="mt-3 font-serif text-2xl text-navy">See what's happening at the studio</p>
+        <p className="mt-2 max-w-md text-muted-foreground">Class moments, new offerings and community news, posted on Instagram.</p>
+        <PillLink href={studio.instagram} className="mt-6">Follow @{studio.instagramHandle}</PillLink>
+      </div>
+    );
+  return (
+    <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+      {posts.map((p) => (
+        <li key={p.id}>
+          <a href={p.href} target="_blank" rel="noopener noreferrer" className="group relative block aspect-square overflow-hidden rounded-[20px] bg-sky-tint">
+            <img src={p.img} alt={p.alt} loading="lazy" className="size-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            {p.video && <Play className="absolute right-3 top-3 size-5 fill-current text-background drop-shadow" aria-hidden />}
+            <span className="sr-only"> (opens Instagram in new tab)</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }
