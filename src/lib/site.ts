@@ -20,7 +20,7 @@ export const studio = {
   instagram: "https://www.instagram.com/allinhealthnwellness/",
   instagramHandle: "allinhealthnwellness",
   // Paste the Behold JSON feed link here (https://feeds.behold.so/...). Empty = show the follow card.
-  instagramFeed: "",
+  instagramFeed: "https://feeds.behold.so/SiRE3iDTEND1BqVjm9nA",
   facebook: "https://www.facebook.com/allinhealthmindandbody",
   googleReviews: "https://www.google.com/maps/search/?api=1&query=All+In+Health+%26+Wellness+1+Shore+Road+Babylon+NY",
   mapsDirections: "https://www.google.com/maps/dir/?api=1&destination=1+Shore+Road+Babylon+NY+11702",
