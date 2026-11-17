@@ -19,6 +19,9 @@ export const studio = {
   email: "info@allinhealth.net",
   instagram: "https://www.instagram.com/allinhealthnwellness/",
   instagramHandle: "allinhealthnwellness",
+  // Paste the Behold JSON feed link here (https://feeds.behold.so/...). Empty = show the follow card.
+  instagramFeed: "",
+  facebook: "https://www.facebook.com/allinhealthmindandbody",
   googleReviews: "https://www.google.com/maps/search/?api=1&query=All+In+Health+%26+Wellness+1+Shore+Road+Babylon+NY",
   mapsDirections: "https://www.google.com/maps/dir/?api=1&destination=1+Shore+Road+Babylon+NY+11702",
   mapEmbed: "https://www.google.com/maps?q=1+Shore+Road,+Babylon,+NY+11702&output=embed",
@@ -96,7 +99,7 @@ export const businessJsonLd = () => ({
   priceRange: "$45–$360",
   address: { "@type": "PostalAddress", streetAddress: studio.street, addressLocality: studio.city, addressRegion: studio.region, postalCode: studio.postal, addressCountry: "US" },
   geo: { "@type": "GeoCoordinates", latitude: studio.geo.lat, longitude: studio.geo.lng },
-  sameAs: [studio.instagram],
+  sameAs: [studio.instagram, studio.facebook],
   founder: { "@type": "Person", name: "Dr. Judi Luttieri", jobTitle: "Doctor of Physical Therapy, Owner & Founder" },
 });
 
@@ -134,3 +137,21 @@ export const pageHead = (o: { title: string; description: string; path: string; 
   links: [{ rel: "canonical", href: o.path }],
   scripts: o.scripts ?? [],
 });
+
+export type IgPost = { id: string; href: string; img: string; alt: string; video: boolean };
+export async function fetchInstagram(): Promise<IgPost[]> {
+  if (!studio.instagramFeed) return [];
+  try {
+    const r = await fetch(studio.instagramFeed);
+    if (!r.ok) return [];
+    const d = await r.json();
+    const posts = (Array.isArray(d) ? d : d.posts ?? []) as any[];
+    return posts.slice(0, 8).map((p) => ({
+      id: String(p.id),
+      href: String(p.permalink ?? studio.instagram),
+      img: String(p.sizes?.medium?.mediaUrl ?? p.thumbnailUrl ?? p.mediaUrl ?? ""),
+      alt: String(p.prunedCaption ?? p.caption ?? "Instagram post from All In Health & Wellness").slice(0, 140),
+      video: p.mediaType === "VIDEO",
+    })).filter((p) => p.img);
+  } catch { return []; }
+}
