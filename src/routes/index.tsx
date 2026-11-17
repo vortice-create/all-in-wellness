@@ -165,6 +165,27 @@ function Home() {
         </div>
       </section>
 
+      {/* Instagram feed */}
+      <section className="section-y" aria-labelledby="ig-title">
+        <div className="container-site">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">On Instagram</p>
+              <h2 id="ig-title" className="mt-2 text-3xl md:text-4xl">@{studio.instagramHandle}</h2>
+            </div>
+            <PillLink href={studio.instagram}>Follow us</PillLink>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-[22px] border bg-card shadow-sm">
+            <iframe
+              src={`https://www.instagram.com/${studio.instagramHandle}/embed`}
+              title="All In Health & Wellness Instagram feed"
+              loading="lazy"
+              className="block h-[640px] w-full md:h-[760px]"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Community, recognition, events */}
       <section className="section-y bg-sky-tint">
         <div className="container-site">

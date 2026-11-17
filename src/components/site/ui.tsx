@@ -71,7 +71,7 @@ export function Footer() {
             <p className="flex gap-2"><MapPin className="size-4 shrink-0 mt-1" aria-hidden />{studio.street}, {studio.city}, {studio.region} {studio.postal}</p>
             <p><a className="flex gap-2 hover:text-mint" href={studio.phoneHref}><Phone className="size-4 mt-1" aria-hidden />{studio.phone}</a></p>
             <p><a className="flex gap-2 hover:text-mint" href={`mailto:${studio.email}`}><Mail className="size-4 mt-1" aria-hidden />{studio.email}</a></p>
-            <p><a className="flex gap-2 hover:text-mint" href={studio.instagram} target="_blank" rel="noopener noreferrer"><Instagram className="size-4 mt-1" aria-hidden />@allinhealthmindandbody</a></p>
+            <p><a className="flex gap-2 hover:text-mint" href={studio.instagram} target="_blank" rel="noopener noreferrer"><Instagram className="size-4 mt-1" aria-hidden />@{studio.instagramHandle}</a></p>
           </address>
         </div>
         <div>
