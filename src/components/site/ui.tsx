@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Facebook, Play, Star, Quote } from "lucide-react";
-import logo from "@/assets/allin-logo.png.asset.json";
+import logo from "@/assets/allin-logo.png";
 import { nav, studio, glofox, faqs, reviews, type Plan, type IgPost } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,7 @@ export function Header() {
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">Skip to content</a>
       <div className="container-site flex h-[72px] items-center justify-between gap-4">
         <Link to="/" className="flex min-w-0 items-center gap-3" aria-label="All In Health & Wellness home">
-          <img src={logo.url} alt="" width={48} height={48} className="size-12 shrink-0 rounded-full" />
+          <img src={logo} alt="" width={48} height={48} className="size-12 shrink-0 rounded-full" />
           <span className="hidden truncate font-serif text-lg sm:block">All In Health &amp; Wellness</span>
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
@@ -60,7 +60,7 @@ export function Footer() {
       <div className="container-site grid gap-10 py-16 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
-            <img src={logo.url} alt="" width={56} height={56} className="size-14 rounded-full" />
+            <img src={logo} alt="" width={56} height={56} className="size-14 rounded-full" />
             <p className="font-serif text-xl">All In Health &amp; Wellness</p>
           </div>
           <p className="mt-4 max-w-sm text-sm text-navy-foreground/80">Reformer Pilates, interval training and wellness coaching in Babylon, NY. Founded by Dr. Judi Luttieri, DPT.</p>

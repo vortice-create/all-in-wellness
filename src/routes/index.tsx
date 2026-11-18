@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { CalendarDays, Instagram, Award, MapPin, Phone } from "lucide-react";
 import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA, ReviewGrid, InstagramGrid } from "@/components/site/ui";
-import truemedLogo from "@/assets/truemed-logo.png.asset.json";
+import truemedLogo from "@/assets/truemed-logo.png";
 import { classes, glofox, introOffer, packages, memberships, privates, photos, studio, businessJsonLd, faqJsonLd, fetchInstagram, ld, pageHead } from "@/lib/site";
 
 const igQuery = queryOptions({ queryKey: ["instagram"], queryFn: fetchInstagram, staleTime: 60 * 60_000 });
@@ -117,7 +117,7 @@ function Home() {
         <div className="container-site">
           <div className="flex flex-col items-start gap-6 rounded-[22px] border bg-card p-8 shadow-soft md:flex-row md:items-center md:justify-between md:p-10">
             <div className="max-w-2xl">
-              <img src={truemedLogo.url} alt="Truemed" loading="lazy" width={173} height={80} className="h-12 w-auto" />
+              <img src={truemedLogo} alt="Truemed" loading="lazy" width={173} height={80} className="h-12 w-auto" />
               <h2 id="hsa-fsa" className="mt-4 text-3xl md:text-4xl">Use your <em className="font-normal italic">HSA/FSA</em> funds</h2>
               <p className="mt-3 text-muted-foreground">Members keep paying as usual, and now you can use pre-tax HSA/FSA funds to cover it.</p>
             </div>
