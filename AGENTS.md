@@ -31,4 +31,4 @@ use the editor.
 
 - Studio facts, prices and Glofox URLs live in src/lib/site.ts; pages and JSON-LD read from it so prices stay in one place.
 - Shared marketing sections live in src/components/site/ui.tsx; header/footer are mounted once in __root.
-- Contact form inserts into public.contact_submissions (anon insert-only RLS); no read access from the browser.
+- Contact form inserts into public.contact_submissions with anon/authenticated insert-only RLS that validates required fields, email format, and field lengths; no read access from the browser, so bypassing frontend validation cannot admit malformed messages.
