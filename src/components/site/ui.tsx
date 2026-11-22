@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Facebook, Play, Star, Quote } from "lucide-react";
 import logo from "@/assets/allin-logo.png";
-import { nav, studio, glofox, faqs, reviews, type Plan, type IgPost } from "@/lib/site";
+import { nav, studio, glofox, faqs, reviews, instructors, type Plan, type IgPost } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Btn = { href: string; children: ReactNode; variant?: "solid" | "light" | "outline" | "ghostLight"; className?: string };
@@ -227,5 +227,29 @@ export function InstagramGrid({ posts }: { posts: IgPost[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+export function InstructorSection({ className }: { className?: string }) {
+  return (
+    <section aria-labelledby="instructors" className={cn("section-y bg-mint-tint", className)}>
+      <div className="container-site">
+        <div id="instructors"><SectionHead eyebrow="Our team" title={<>Meet your <em className="font-normal italic">instructors</em></>} intro="Two distinct Pilates styles, one supportive studio." /></div>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {instructors.map((t) => (
+            <article key={t.name} className="flex flex-col overflow-hidden rounded-[20px] border bg-card shadow-soft">
+              <img src={t.img} alt={t.alt} loading="lazy" className="aspect-[4/5] w-full object-cover object-top" />
+              <div className="flex flex-1 flex-col p-7">
+                <p className="eyebrow text-primary">{t.style}</p>
+                <h3 className="mt-2 text-2xl">{t.name}</h3>
+                <p className="mt-3 font-semibold text-foreground">{t.description}</p>
+                <p className="mt-3 text-muted-foreground">{t.bio}</p>
+                <div className="mt-auto pt-6"><PillLink href={glofox.schedule}>Book a class</PillLink></div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, PillLink, SectionHead, BookingCTA } from "@/components/site/ui";
+import { PageHero, PillLink, SectionHead, BookingCTA, InstructorSection } from "@/components/site/ui";
 import { photos, ld, pageHead, studio } from "@/lib/site";
 
 const timeline = [
@@ -42,6 +42,8 @@ function AboutPage() {
           </div>
         </div>
       </section>
+
+      <InstructorSection />
 
       <section className="section-y bg-sky-tint">
         <div className="container-site grid gap-10 md:grid-cols-2">

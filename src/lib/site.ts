@@ -1,3 +1,5 @@
+import dianaPhoto from "@/assets/diana.jpg";
+import sabrinaPhoto from "@/assets/sabrina.jpg";
 const BRANCH = "6800273ac38efe7c330bf920";
 const PORTAL = `https://app.glofox.com/portal/#/branch/${BRANCH}`;
 
@@ -155,3 +157,12 @@ export async function fetchInstagram(): Promise<IgPost[]> {
     })).filter((p) => p.img);
   } catch { return []; }
 }
+
+export const instructors = [
+  { name: "Diana", style: "Contemporary Pilates Reformer", img: dianaPhoto, alt: "Diana, Contemporary Pilates Reformer instructor at All In Health & Wellness",
+    description: "Contemporary Pilates Reformer blends the foundational principles of classical Pilates with modern movement techniques and exercise science.",
+    bio: "A refined experience combining athletic movement, mindful control, and contemporary sequencing. Expect intentional transitions, challenging full-body flows, and a balance of strength, length, and endurance. Designed to challenge your body, elevate your energy, and leave you feeling strong, sculpted, and aligned." },
+  { name: "Sabrina", style: "Foundational Pilates", img: sabrinaPhoto, alt: "Sabrina, Yoga and Foundational Pilates instructor at All In Health & Wellness",
+    description: "Foundational Pilates focuses on the original principles and movement system developed by Joseph Pilates. It emphasizes core strength, posture, alignment, breath, stability, and mindful movement.",
+    bio: "Sabrina is a Yoga and Pilates instructor, emphasizing the body-mind connection. All movement becomes more effective when we are connected through mind, body, and spirit. You will experience slow and precise exercises that challenge the entire body." },
+];
