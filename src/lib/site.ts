@@ -1,5 +1,6 @@
 import dianaPhoto from "@/assets/diana.jpg";
 import sabrinaPhoto from "@/assets/sabrina.jpg";
+import reformerPhoto from "@/assets/total-body-reformer.jpg";
 const BRANCH = "6800273ac38efe7c330bf920";
 const PORTAL = `https://app.glofox.com/portal/#/branch/${BRANCH}`;
 
@@ -34,7 +35,7 @@ export const studio = {
 const wp = (path: string, w = 1400) => `https://i0.wp.com/allinhealth.net/wp-content/uploads/${path}?w=${w}&ssl=1`;
 export const photos = {
   studio: wp("2025/01/AllinStudio3.jpg", 1800),
-  reformer: wp("2024/08/allinhealth-86-scaled.jpg"),
+  reformer: reformerPhoto,
   interval: wp("2024/08/allinhealth-73-scaled.jpg"),
   coaching: wp("2025/02/beyourbestself-02.jpg"),
   judi: wp("2024/08/allinhealth-38-scaled.jpg", 1100),
