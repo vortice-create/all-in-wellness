@@ -34,7 +34,7 @@ function Home() {
             <h1 className="mt-3 text-[2.3rem] md:text-6xl">
               All In Health &amp; Wellness: Reformer Pilates in Babylon, <em className="font-normal italic">built around you.</em>
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-navy-foreground/90">Small-group Reformer and interval classes led by Dr. Judi Luttieri, a Doctor of Physical Therapy. Every level welcome.</p>
+            <p className="mt-5 max-w-xl text-lg text-navy-foreground/90">Small-group Reformer and interval classes led by Dr. Judi Luttieri,{'\n'}a Doctor of Physical Therapy. Every level welcome.</p>
             <div className="mt-7 flex flex-wrap gap-3">
               <PillLink href={glofox.memberships} variant="light">Book now</PillLink>
               <PillLink href="/classes" variant="ghostLight">Explore classes</PillLink>
