@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { introOffer, packages, memberships, privates, glofox } from "@/lib/site";
+import { introOffer, packages, memberships, privates, coachingReset, glofox } from "@/lib/site";
 
 describe("published prices", () => {
   it("intro offer is 3 classes for $99 within 2 weeks", () => {
@@ -12,6 +12,11 @@ describe("published prices", () => {
   });
   it("memberships monthly / annual", () => {
     expect(memberships.map((m) => [m.monthly, m.annual])).toEqual([["$160", "$140"], ["$300", "$270"], ["$360", "$330"]]);
+  });
+  it("30-Day Reset coaching is $299", () => {
+    expect(coachingReset.price).toBe("$299");
+    expect(coachingReset.note).toContain("1st of each month");
+    expect(coachingReset.href).toContain("6800273ac38efe7c330bf920");
   });
   it("private sessions and evaluation", () => {
     expect(privates.map((p) => p.price)).toEqual(["$130", "$336", "$250"]);

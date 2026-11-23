@@ -3,7 +3,7 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { CalendarDays, Instagram, Award, MapPin, Phone } from "lucide-react";
 import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA, ReviewGrid, InstagramGrid, InstructorSection } from "@/components/site/ui";
 import truemedLogo from "@/assets/truemed-logo.png";
-import { classes, glofox, introOffer, packages, memberships, privates, photos, studio, businessJsonLd, faqJsonLd, fetchInstagram, ld, pageHead } from "@/lib/site";
+import { classes, glofox, introOffer, packages, memberships, privates, coachingReset, photos, studio, businessJsonLd, faqJsonLd, fetchInstagram, ld, pageHead } from "@/lib/site";
 
 const igQuery = queryOptions({ queryKey: ["instagram"], queryFn: fetchInstagram, staleTime: 60 * 60_000 });
 
@@ -163,7 +163,7 @@ function Home() {
             <div className="p-8 md:p-12">
               <p className="eyebrow text-primary">Crack the Code Coaching</p>
               <h2 className="mt-2 text-3xl md:text-4xl">The 30-Day Reset</h2>
-              <p className="mt-3 font-serif text-3xl text-navy">$297</p>
+              <p className="mt-3 font-serif text-3xl text-navy">{coachingReset.price}</p>
               <p className="mt-1 text-sm font-semibold text-muted-foreground">Starts the 1st of each month</p>
               <p className="mt-4 text-muted-foreground">Lower inflammation, rebuild better habits and get your stress response under control, with weekly virtual coaching and daily action steps.</p>
               <PillLink href="/coaching" className="mt-6">Explore the Reset</PillLink>

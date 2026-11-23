@@ -64,6 +64,8 @@ export const privates: Plan[] = [
   { name: "PT Evaluation", price: "$250", note: "Assessment with Dr. Judi, DPT", href: glofox.memberships, cta: "Book evaluation" },
 ];
 
+export const coachingReset: Plan = { name: "30-Day Reset", price: "$299", note: "Starts the 1st of each month", href: glofox.memberships, cta: "Start the Reset" };
+
 export const classes = [
   { name: "Total Body Reformer", img: photos.reformer, alt: "Clients on Pilates Reformers at All In Health & Wellness in Babylon", body: "A full-body Reformer workout that strengthens, tones and stretches with controlled movement. Builds core strength, flexibility and balance. All levels welcome." },
   { name: "Interval Training", img: photos.interval, alt: "Interval training class in the All In studio", body: "High-energy rounds of cardio and strength that build endurance and muscle in a fun, fast-paced setting. Suitable for all fitness levels." },

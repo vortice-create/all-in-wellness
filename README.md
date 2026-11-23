@@ -45,7 +45,7 @@ Build the homepage in this order:
 Supporting routes:
 - Classes & Schedule (/classes): class types, what to bring, and live Glofox timetable embed / direct booking links.
 - Pricing & Memberships (/pricing): clear tiers for Intro Offer ($99 for 3 classes), Class Packages (10 for $430, 20 for $790, single class $45), Memberships (Wellness Starter 4x/mo at $160 or $140/yr, Signature 8x/mo at $300 or $270/yr, Elite 12x/mo at $360 or $330/yr), Private Reformer Sessions ($130 single, $336 3-pack), and PT Evaluation ($250). Connect each package to Glofox purchase flow.
-- Coaching (/coaching): focused on the 30-Day Reset ($297). Keep the $99 add-on out of public pricing until approved.
+- Coaching (/coaching): focused on the 30-Day Reset ($299). Keep the $99 add-on out of public pricing until approved.
 - About Us (/about): Dr. Judi Luttieri's background, philosophy, studio story in Babylon, credentials.
 - Contact (/contact): 1 Shore Road, Babylon, NY 11702, phone (631) 213-5115, email info@allinhealth.net, contact form, map, parking directions.
 

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PageHero, PillLink, SectionHead, BookingCTA } from "@/components/site/ui";
-import { glofox, photos, studio, ld, pageHead, serviceJsonLd } from "@/lib/site";
+import { glofox, photos, studio, ld, pageHead, serviceJsonLd, coachingReset } from "@/lib/site";
 
 const includes = [
   "Reduce inflammation & understand your sugar/salt habit",
@@ -17,10 +17,10 @@ export const Route = createFileRoute("/coaching")({
   head: () =>
     pageHead({
       title: "30-Day Reset Health Coaching | Dr. Judi Luttieri, Babylon NY",
-      description: "The 30-Day Reset ($297) with Dr. Judi Luttieri, DPT: lower inflammation, build better habits and manage stress. Starts the 1st of each month.",
+      description: `The 30-Day Reset (${coachingReset.price}) with Dr. Judi Luttieri, DPT: lower inflammation, build better habits and manage stress. Starts the 1st of each month.`,
       path: "/coaching",
       image: photos.share,
-      scripts: [ld(serviceJsonLd("30-Day Reset coaching program", "A month-long coaching program to lower inflammation, build habits and manage stress.", "$297"))],
+      scripts: [ld(serviceJsonLd("30-Day Reset coaching program", "A month-long coaching program to lower inflammation, build habits and manage stress.", coachingReset.price))],
     }),
   component: CoachingPage,
 });
@@ -44,7 +44,7 @@ function CoachingPage() {
             </div>
           </div>
           <article className="rounded-[20px] border bg-mint-tint p-8 shadow-soft">
-            <p className="font-serif text-5xl text-navy">$297</p>
+            <p className="font-serif text-5xl text-navy">{coachingReset.price}</p>
             <p className="mt-1 font-semibold text-muted-foreground">Starts the 1st of each month</p>
             <h3 className="mt-6 text-xl">What's included</h3>
             <ul className="mt-4 space-y-3">{includes.map((i) => <li key={i} className="flex gap-3"><Check className="mt-1 size-5 shrink-0 text-primary" aria-hidden />{i}</li>)}</ul>
