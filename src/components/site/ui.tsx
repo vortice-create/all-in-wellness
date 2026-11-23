@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Facebook, Play, Star, Quote } from "lucide-react";
 import logo from "@/assets/allin-logo.png";
 import { nav, studio, glofox, faqs, reviews, instructors, type Plan, type IgPost } from "@/lib/site";
@@ -21,6 +21,13 @@ export function PillLink({ href, children, variant = "solid", className }: Btn) 
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const btn = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { setOpen(false); btn.current?.focus(); } };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
   return (
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">Skip to content</a>
@@ -36,13 +43,13 @@ export function Header() {
         </nav>
         <div className="flex shrink-0 items-center gap-2">
           <PillLink href={glofox.schedule} className="px-4 py-2">Book now</PillLink>
-          <button className="rounded-full p-2 lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
-            {open ? <X /> : <Menu />}
+          <button ref={btn} className="grid min-h-11 min-w-11 place-items-center rounded-full lg:hidden" aria-controls="mobile-nav" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
+            {open ? <X aria-hidden /> : <Menu aria-hidden />}
           </button>
         </div>
       </div>
       {open && (
-        <nav aria-label="Mobile" className="border-t lg:hidden">
+        <nav id="mobile-nav" aria-label="Mobile" className="border-t lg:hidden">
           <ul className="container-site py-3">
             {nav.map((n) => (
               <li key={n.to}><Link to={n.to} onClick={() => setOpen(false)} className="block py-3 font-semibold">{n.label}</Link></li>
@@ -71,15 +78,16 @@ export function Footer() {
             <p className="flex gap-2"><MapPin className="size-4 shrink-0 mt-1" aria-hidden />{studio.street}, {studio.city}, {studio.region} {studio.postal}</p>
             <p><a className="flex gap-2 hover:text-mint" href={studio.phoneHref}><Phone className="size-4 mt-1" aria-hidden />{studio.phone}</a></p>
             <p><a className="flex gap-2 hover:text-mint" href={`mailto:${studio.email}`}><Mail className="size-4 mt-1" aria-hidden />{studio.email}</a></p>
-            <p><a className="flex gap-2 hover:text-mint" href={studio.instagram} target="_blank" rel="noopener noreferrer"><Instagram className="size-4 mt-1" aria-hidden />@{studio.instagramHandle}</a></p>
-            <p><a className="flex gap-2 hover:text-mint" href={studio.facebook} target="_blank" rel="noopener noreferrer"><Facebook className="size-4 mt-1" aria-hidden />Facebook</a></p>
+            <p><a className="flex gap-2 hover:text-mint" href={studio.instagram} target="_blank" rel="noopener noreferrer"><Instagram className="size-4 mt-1" aria-hidden />@{studio.instagramHandle}<span className="sr-only"> (opens in new tab)</span></a></p>
+            <p><a className="flex gap-2 hover:text-mint" href={studio.facebook} target="_blank" rel="noopener noreferrer"><Facebook className="size-4 mt-1" aria-hidden />Facebook<span className="sr-only"> (opens in new tab)</span></a></p>
           </address>
         </div>
         <div>
           <p className="eyebrow text-mint">Explore</p>
           <ul className="mt-3 space-y-2 text-sm">
             {nav.map((n) => <li key={n.to}><Link to={n.to} className="text-navy-foreground/85 hover:text-mint">{n.label}</Link></li>)}
-            <li><a href={glofox.schedule} target="_blank" rel="noopener noreferrer" className="text-navy-foreground/85 hover:text-mint">Class schedule</a></li>
+            <li><a href={glofox.schedule} target="_blank" rel="noopener noreferrer" className="text-navy-foreground/85 hover:text-mint">Class schedule<span className="sr-only"> (opens in new tab)</span></a></li>
+            <li><Link to="/accessibility" className="text-navy-foreground/85 hover:text-mint">Accessibility</Link></li>
           </ul>
         </div>
       </div>
@@ -175,7 +183,7 @@ export function ReviewGrid() {
       {reviews.map((r) => (
         <figure key={r.name} className="flex flex-col rounded-[20px] border bg-card p-7 shadow-soft">
           <div className="flex items-center justify-between">
-            <div className="flex text-primary" aria-label="5 out of 5 stars">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="size-4 fill-current" />)}</div>
+            <div className="flex text-primary" role="img" aria-label="5 out of 5 stars">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="size-4 fill-current" aria-hidden />)}</div>
             <Quote className="size-6 text-peri" aria-hidden />
           </div>
           <blockquote className="mt-4 font-serif text-2xl leading-snug text-navy">&ldquo;{r.quote}&rdquo;</blockquote>

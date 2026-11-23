@@ -32,6 +32,7 @@ const field = "mt-1 w-full rounded-xl border border-input bg-background px-4 py-
 function ContactPage() {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -40,9 +41,14 @@ function ContactPage() {
     const get = (k: string) => String(fd.get(k) ?? "");
     const parsed = schema.safeParse({ name: get("name"), email: get("email"), message: get("message"), phone: get("phone") || undefined, interest: get("interest") || undefined });
     if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? "Please check the form");
+      const errs: Record<string, string> = {};
+      for (const i of parsed.error.issues) { const k = String(i.path[0]); if (!errs[k]) errs[k] = i.message; }
+      setErrors(errs);
+      const first = Object.keys(errs)[0];
+      if (first) (form.elements.namedItem(first) as HTMLElement | null)?.focus();
       return;
     }
+    setErrors({});
     setSending(true);
     const { error } = await supabase.from("contact_submissions").insert(parsed.data as never);
     setSending(false);
@@ -63,20 +69,21 @@ function ContactPage() {
           <div className="rounded-[20px] border bg-card p-6 shadow-soft md:p-8">
             <h2 className="text-2xl">Send a message</h2>
             {sent ? (
-              <p role="status" className="mt-6 rounded-xl bg-mint-tint p-5">Thanks! Your message is in. We'll be in touch within 24 hours.</p>
+              <p role="status" aria-live="polite" className="mt-6 rounded-xl bg-mint-tint p-5">Thanks! Your message is in. We'll be in touch within 24 hours.</p>
             ) : (
+              <><p className="mt-2 text-sm text-muted-foreground">Fields marked * are required.</p>
               <form onSubmit={onSubmit} className="mt-6 grid gap-4 sm:grid-cols-2" noValidate>
-                <label className="text-sm font-semibold">Name<input name="name" required maxLength={120} autoComplete="name" className={field} /></label>
-                <label className="text-sm font-semibold">Email<input name="email" type="email" required maxLength={255} autoComplete="email" className={field} /></label>
+                <label className="text-sm font-semibold">Name <span aria-hidden="true">*</span><input name="name" required maxLength={120} autoComplete="name" className={field} aria-invalid={!!errors["name"]} aria-describedby={errors["name"] ? "name-error" : undefined} />{errors["name"] && <span id="name-error" className="mt-1 block font-normal text-destructive">{errors["name"]}</span>}</label>
+                <label className="text-sm font-semibold">Email <span aria-hidden="true">*</span><input name="email" type="email" required maxLength={255} autoComplete="email" className={field} aria-invalid={!!errors["email"]} aria-describedby={errors["email"] ? "email-error" : undefined} />{errors["email"] && <span id="email-error" className="mt-1 block font-normal text-destructive">{errors["email"]}</span>}</label>
                 <label className="text-sm font-semibold">Phone (optional)<input name="phone" type="tel" maxLength={40} autoComplete="tel" className={field} /></label>
                 <label className="text-sm font-semibold">I'm interested in
                   <select name="interest" className={field} defaultValue="Intro offer">
                     {["Intro offer", "Classes", "Packages & memberships", "Private sessions", "PT evaluation", "30-Day Reset", "Other"].map((o) => <option key={o}>{o}</option>)}
                   </select>
                 </label>
-                <label className="text-sm font-semibold sm:col-span-2">Message<textarea name="message" required maxLength={2000} rows={5} className={field} /></label>
+                <label className="text-sm font-semibold sm:col-span-2">Message <span aria-hidden="true">*</span><textarea name="message" required maxLength={2000} rows={5} className={field} aria-invalid={!!errors["message"]} aria-describedby={errors["message"] ? "message-error" : undefined} />{errors["message"] && <span id="message-error" className="mt-1 block font-normal text-destructive">{errors["message"]}</span>}</label>
                 <button type="submit" disabled={sending} className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground hover:bg-navy disabled:opacity-60 sm:w-fit">{sending ? "Sending…" : "Send message"}</button>
-              </form>
+              </form></>
             )}
           </div>
 
