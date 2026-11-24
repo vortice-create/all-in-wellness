@@ -85,6 +85,7 @@ export const faqs = [
   { q: "Where do I park?", a: "Call the studio at (631) 213-5115 before your first visit and we'll walk you through the best parking options near 1 Shore Road." },
   { q: "What should I wear and bring?", a: "Wear comfortable, fitted workout clothing you can move in, and bring a water bottle. Arrive about 10 minutes early for your first class so we can set you up on the Reformer." },
   { q: "How do I book a class?", a: "Book online through our Glofox schedule. Choose a class, sign in or create an account, and pay with your intro offer, pack or membership." },
+  { q: "What is the cancellation policy?", a: cancellationPolicy },
 ];
 
 export const nav = [
