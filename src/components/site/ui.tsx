@@ -2,7 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Facebook, Play, Star, Quote } from "lucide-react";
 import logo from "@/assets/allin-logo.png";
-import { nav, studio, glofox, faqs, reviews, instructors, cancellationPolicy, type Plan, type IgPost } from "@/lib/site";
+import { nav, studio, glofox, type Plan, type IgPost } from "@/lib/site";
+import { useContent } from "@/hooks/use-content";
+import type { SiteContent } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 type Btn = { href: string; children: ReactNode; variant?: "solid" | "light" | "outline" | "ghostLight"; className?: string };
@@ -28,7 +30,14 @@ export function Header() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+  const { announcement } = useContent();
   return (
+    <>
+    {announcement.enabled && announcement.text && (
+      <div role="region" aria-label="Studio announcement" className="bg-navy px-4 py-2 text-center text-sm font-semibold text-navy-foreground">
+        {announcement.link ? <a href={announcement.link} className="underline underline-offset-4">{announcement.text}</a> : announcement.text}
+      </div>
+    )}
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">Skip to content</a>
       <div className="container-site flex h-[72px] items-center justify-between gap-4">
@@ -58,6 +67,7 @@ export function Header() {
         </nav>
       )}
     </header>
+    </>
   );
 }
 
@@ -149,7 +159,9 @@ export function PriceCard({ plan, tone = "bg-card" }: { plan: Plan; tone?: strin
   );
 }
 
-export function FaqList({ items = faqs }: { items?: typeof faqs }) {
+export function FaqList({ items: given }: { items?: SiteContent["faqs"] }) {
+  const content = useContent();
+  const items = given ?? content.faqs;
   return (
     <div className="divide-y rounded-[20px] border bg-card">
       {items.map((f) => (
@@ -178,6 +190,7 @@ export function GlofoxEmbed({ src, title, height = 900 }: { src: string; title: 
 }
 
 export function ReviewGrid() {
+  const { reviews } = useContent();
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {reviews.map((r) => (
@@ -196,6 +209,7 @@ export function ReviewGrid() {
 }
 
 export function CancellationNote() {
+  const cancellationPolicy = useContent().cancellationPolicy.text;
   return (
     <section aria-labelledby="cancellation-policy" className="pt-16 md:pt-[84px]">
       <div className="container-site">
@@ -252,6 +266,7 @@ export function InstagramGrid({ posts }: { posts: IgPost[] }) {
 }
 
 export function InstructorSection({ className }: { className?: string }) {
+  const { instructors } = useContent();
   return (
     <section aria-labelledby="instructors" className={cn("section-y bg-mint-tint", className)}>
       <div className="container-site">

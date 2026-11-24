@@ -15,6 +15,13 @@
       "when": 1794966059754,
       "tag": "0001_validate_public_contact_submissions",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795546918541,
+      "tag": "0002_cms_content_and_admin_roles",
+      "breakpoints": true
     }
   ]
 }

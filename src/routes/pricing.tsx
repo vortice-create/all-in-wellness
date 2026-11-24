@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, PillLink, SectionHead, PriceCard, GlofoxEmbed, CancellationNote, BookingCTA } from "@/components/site/ui";
-import { glofox, introOffer, packages, memberships, privates, photos, ld, pageHead, serviceJsonLd } from "@/lib/site";
+import { useContent } from "@/hooks/use-content";
+import { glofox, photos, ld, pageHead, serviceJsonLd } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/pricing")({
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/pricing")({
 });
 
 function PricingPage() {
+  const { introOffer, packages, memberships, privates } = useContent();
   return (
     <>
       <PageHero eyebrow="Pricing & memberships" title={<>Simple ways to go <em className="font-normal italic">all in</em></>} intro="Every purchase is completed securely through our Glofox portal." img={photos.studio}>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PageHero, PillLink, SectionHead, BookingCTA } from "@/components/site/ui";
+import { useContent } from "@/hooks/use-content";
 import { glofox, photos, studio, ld, pageHead, serviceJsonLd, coachingReset } from "@/lib/site";
 
 const includes = [
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/coaching")({
 });
 
 function CoachingPage() {
+  const { coachingReset } = useContent();
   return (
     <>
       <PageHero eyebrow="Crack the Code Coaching" title={<>Stop suppressing <em className="font-normal italic">the signal.</em></>} intro="Coaching that brings you back to listening to your body. It's time to quiet the diet noise for good." img={photos.coaching}>
@@ -45,7 +47,7 @@ function CoachingPage() {
           </div>
           <article className="rounded-[20px] border bg-mint-tint p-8 shadow-soft">
             <p className="font-serif text-5xl text-navy">{coachingReset.price}</p>
-            <p className="mt-1 font-semibold text-muted-foreground">Starts the 1st of each month</p>
+            <p className="mt-1 font-semibold text-muted-foreground">{coachingReset.note}</p>
             <h3 className="mt-6 text-xl">What's included</h3>
             <ul className="mt-4 space-y-3">{includes.map((i) => <li key={i} className="flex gap-3"><Check className="mt-1 size-5 shrink-0 text-primary" aria-hidden />{i}</li>)}</ul>
             <PillLink href={glofox.memberships} className="mt-8 w-full">Start the Reset</PillLink>

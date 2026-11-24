@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PageHero, PillLink, SectionHead, GlofoxEmbed, CancellationNote, BookingCTA } from "@/components/site/ui";
+import { useContent } from "@/hooks/use-content";
 import { classes, glofox, photos, ld, pageHead, serviceJsonLd } from "@/lib/site";
 
 export const Route = createFileRoute("/classes")({
@@ -18,6 +19,7 @@ export const Route = createFileRoute("/classes")({
 const bring = ["Comfortable, fitted workout clothes", "A water bottle", "Arrive 10 minutes early for your first class", "Tell your instructor about any injuries"];
 
 function ClassesPage() {
+  const { classes } = useContent();
   return (
     <>
       <PageHero eyebrow="Classes & schedule" title={<>Classes for <em className="font-normal italic">every</em> body</>} intro="Small-group Reformer Pilates and Interval Training in Babylon. Pick a time below and book in a few taps." img={photos.reformer}>

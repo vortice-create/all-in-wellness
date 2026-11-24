@@ -3,7 +3,8 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { CalendarDays, Instagram, Award, MapPin, Phone } from "lucide-react";
 import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA, ReviewGrid, InstagramGrid, InstructorSection } from "@/components/site/ui";
 import truemedLogo from "@/assets/truemed-logo.png";
-import { classes, glofox, introOffer, packages, memberships, privates, coachingReset, photos, studio, businessJsonLd, faqJsonLd, fetchInstagram, ld, pageHead } from "@/lib/site";
+import { useContent } from "@/hooks/use-content";
+import { glofox, photos, studio, businessJsonLd, faqJsonLd, fetchInstagram, ld, pageHead } from "@/lib/site";
 
 const igQuery = queryOptions({ queryKey: ["instagram"], queryFn: fetchInstagram, staleTime: 60 * 60_000 });
 
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const { data: igPosts } = useSuspenseQuery(igQuery);
+  const { classes, introOffer, packages, memberships, privates, coachingReset } = useContent();
   return (
     <>
       {/* Hero */}

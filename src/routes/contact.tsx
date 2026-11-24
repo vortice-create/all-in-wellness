@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { MapPin, Phone, Mail, Car } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { PageHero, PillLink, FaqList } from "@/components/site/ui";
+import { useContent } from "@/hooks/use-content";
 import { photos, studio, faqs, businessJsonLd, ld, pageHead } from "@/lib/site";
 
 const schema = z.object({
@@ -98,7 +99,7 @@ function ContactPage() {
             </div>
             <div className="rounded-[20px] bg-mint-tint p-6">
               <h2 className="flex items-center gap-2 text-2xl"><Car className="size-6 text-primary" aria-hidden />Parking</h2>
-              <p className="mt-3 text-muted-foreground">{faqs[3]?.a}</p>
+              <p className="mt-3 text-muted-foreground">{(useContent().faqs.find((f) => /park/i.test(f.q)) ?? faqs[3])?.a}</p>
             </div>
             <iframe title="Map to All In Health & Wellness, 1 Shore Road, Babylon" src={studio.mapEmbed} loading="lazy" className="aspect-[4/3] w-full rounded-[20px] border-0" />
             <PillLink href={studio.mapsDirections} variant="outline" className="w-full">Get directions</PillLink>
