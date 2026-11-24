@@ -66,6 +66,8 @@ export const privates: Plan[] = [
 
 export const coachingReset: Plan = { name: "30-Day Reset", price: "$299", note: "Starts the 1st of each month", href: glofox.memberships, cta: "Start the Reset" };
 
+export const cancellationPolicy = "Classes must be cancelled at least 5 hours before the start of class. Cancellations made within 5 hours of class are charged a $20 cancel fee and lose the credit for the class.";
+
 export const classes = [
   { name: "Total Body Reformer", img: photos.reformer, alt: "Clients on Pilates Reformers at All In Health & Wellness in Babylon", body: "A full-body Reformer workout that strengthens, tones and stretches with controlled movement. Builds core strength, flexibility and balance. All levels welcome." },
   { name: "Interval Training", img: photos.interval, alt: "Interval training class in the All In studio", body: "High-energy rounds of cardio and strength that build endurance and muscle in a fun, fast-paced setting. Suitable for all fitness levels." },

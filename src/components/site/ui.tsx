@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Facebook, Play, Star, Quote } from "lucide-react";
 import logo from "@/assets/allin-logo.png";
-import { nav, studio, glofox, faqs, reviews, instructors, type Plan, type IgPost } from "@/lib/site";
+import { nav, studio, glofox, faqs, reviews, instructors, cancellationPolicy, type Plan, type IgPost } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Btn = { href: string; children: ReactNode; variant?: "solid" | "light" | "outline" | "ghostLight"; className?: string };
@@ -192,6 +192,19 @@ export function ReviewGrid() {
         </figure>
       ))}
     </div>
+  );
+}
+
+export function CancellationNote() {
+  return (
+    <section aria-labelledby="cancellation-policy" className="pt-16 md:pt-[84px]">
+      <div className="container-site">
+        <div className="mx-auto max-w-3xl rounded-[20px] border bg-sky-tint p-6 text-center md:p-8">
+          <p id="cancellation-policy" className="eyebrow text-primary">Cancellation policy</p>
+          <p className="mt-3 text-muted-foreground">{cancellationPolicy}</p>
+        </div>
+      </div>
+    </section>
   );
 }
 

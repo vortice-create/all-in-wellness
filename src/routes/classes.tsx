@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
-import { PageHero, PillLink, SectionHead, GlofoxEmbed, BookingCTA } from "@/components/site/ui";
+import { PageHero, PillLink, SectionHead, GlofoxEmbed, CancellationNote, BookingCTA } from "@/components/site/ui";
 import { classes, glofox, photos, ld, pageHead, serviceJsonLd } from "@/lib/site";
 
 export const Route = createFileRoute("/classes")({
@@ -58,6 +58,7 @@ function ClassesPage() {
         </div>
       </section>
 
+      <CancellationNote />
       <BookingCTA />
     </>
   );

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, PillLink, SectionHead, PriceCard, GlofoxEmbed, BookingCTA } from "@/components/site/ui";
+import { PageHero, PillLink, SectionHead, PriceCard, GlofoxEmbed, CancellationNote, BookingCTA } from "@/components/site/ui";
 import { glofox, introOffer, packages, memberships, privates, photos, ld, pageHead, serviceJsonLd } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -72,6 +72,7 @@ function PricingPage() {
         </div>
       </section>
 
+      <CancellationNote />
       <BookingCTA />
     </>
   );
