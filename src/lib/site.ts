@@ -172,3 +172,11 @@ export const instructors = [
     description: "Foundational Pilates focuses on the original principles and movement system developed by Joseph Pilates. It emphasizes core strength, posture, alignment, breath, stability, and mindful movement.",
     bio: "Sabrina is a Yoga and Pilates instructor, emphasizing the body-mind connection. All movement becomes more effective when we are connected through mind, body, and spirit. You will experience slow and precise exercises that challenge the entire body." },
 ];
+
+/** Black Friday Week promo lines shown on pricing cards. Remove after 11/30. */
+export const blackFridayPromo = {
+  packNames: ["10-class pack", "20-class pack"],
+  packs: "Black Friday: get 3 classes free · ends 11/30",
+  annual: "Black Friday: pay annually, get your 12th month free · ends 11/30",
+  referral: "Refer a friend — get 1 free class and a raffle entry · ends 11/30",
+};

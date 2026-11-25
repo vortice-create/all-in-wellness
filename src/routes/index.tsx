@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { CalendarDays, Instagram, Award, MapPin, Phone } from "lucide-react";
-import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA, ReviewGrid, InstagramGrid, InstructorSection } from "@/components/site/ui";
+import { PillLink, Stamp, SectionHead, PriceCard, FaqList, BookingCTA, ReviewGrid, InstagramGrid, InstructorSection, PromoBadge } from "@/components/site/ui";
 import truemedLogo from "@/assets/truemed-logo.png";
 import { useContent } from "@/hooks/use-content";
-import { glofox, photos, studio, businessJsonLd, faqJsonLd, fetchInstagram, ld, pageHead } from "@/lib/site";
+import { glofox, photos, studio, businessJsonLd, faqJsonLd, fetchInstagram, ld, pageHead, blackFridayPromo } from "@/lib/site";
 
 const igQuery = queryOptions({ queryKey: ["instagram"], queryFn: fetchInstagram, staleTime: 60 * 60_000 });
 
@@ -129,11 +129,13 @@ function Home() {
             <article className="rounded-[20px] border bg-card p-6 shadow-soft">
               <h3 className="text-xl">Class packages</h3>
               <ul className="mt-4 space-y-2 text-sm">{packages.map((p) => <li key={p.name} className="flex justify-between gap-2"><span>{p.name}</span><strong>{p.price}</strong></li>)}</ul>
+              <PromoBadge>{blackFridayPromo.packs.replace("Black Friday: get", "10 or 20 pack: get")}</PromoBadge>
               <PillLink href="/pricing#packages" variant="outline" className="mt-6 w-full">View packages</PillLink>
             </article>
             <article className="rounded-[20px] border bg-card p-6 shadow-soft">
               <h3 className="text-xl">Memberships</h3>
               <ul className="mt-4 space-y-2 text-sm">{memberships.map((m) => <li key={m.name} className="flex justify-between gap-2"><span>{m.name}</span><strong>from {m.annual}/mo</strong></li>)}</ul>
+              <PromoBadge>{blackFridayPromo.annual.replace("Black Friday: pay", "Pay")}</PromoBadge>
               <PillLink href="/pricing#memberships" variant="outline" className="mt-6 w-full">View memberships</PillLink>
             </article>
             <article className="rounded-[20px] border bg-card p-6 shadow-soft">

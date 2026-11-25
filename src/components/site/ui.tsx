@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Instagram, Facebook, Play, Star, Quote } from "lucide-react";
 import logo from "@/assets/allin-logo.png";
-import { nav, studio, glofox, type Plan, type IgPost } from "@/lib/site";
+import { nav, studio, glofox, type Plan, type IgPost, blackFridayPromo } from "@/lib/site";
 import { useContent } from "@/hooks/use-content";
 import type { SiteContent } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -147,6 +147,10 @@ export function PageHero({ eyebrow, title, intro, img, children }: { eyebrow: st
   );
 }
 
+export function PromoBadge({ children }: { children: ReactNode }) {
+  return <p className="mt-3 rounded-[12px] bg-peri-tint px-3 py-2 text-sm font-semibold text-primary">{children}</p>;
+}
+
 export function PriceCard({ plan, tone = "bg-card" }: { plan: Plan; tone?: string }) {
   return (
     <article className={cn("flex flex-col rounded-[20px] border p-6 shadow-soft", tone)}>
@@ -154,6 +158,7 @@ export function PriceCard({ plan, tone = "bg-card" }: { plan: Plan; tone?: strin
       <p className="mt-3 font-serif text-4xl text-navy">{plan.price}</p>
       <p className="mt-1 text-sm font-semibold text-muted-foreground">{plan.note}</p>
       {plan.detail && <p className="mt-3 text-sm text-muted-foreground">{plan.detail}</p>}
+      {blackFridayPromo.packNames.includes(plan.name) && <PromoBadge>{blackFridayPromo.packs}</PromoBadge>}
       <div className="mt-auto pt-6"><PillLink href={plan.href} className="w-full">{plan.cta}</PillLink></div>
     </article>
   );

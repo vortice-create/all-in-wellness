@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, PillLink, SectionHead, PriceCard, GlofoxEmbed, CancellationNote, BookingCTA } from "@/components/site/ui";
+import { PageHero, PillLink, SectionHead, PriceCard, GlofoxEmbed, CancellationNote, BookingCTA, PromoBadge } from "@/components/site/ui";
 import { useContent } from "@/hooks/use-content";
-import { glofox, photos, ld, pageHead, serviceJsonLd } from "@/lib/site";
+import { glofox, photos, ld, pageHead, serviceJsonLd, blackFridayPromo } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/pricing")({
@@ -39,6 +39,7 @@ function PricingPage() {
         <div className="container-site">
           <SectionHead eyebrow="Class packages" title="Pay as you go" />
           <div className="mt-8 grid gap-6 md:grid-cols-3">{packages.map((p) => <PriceCard key={p.name} plan={p} />)}</div>
+          <p className="mt-6 text-center text-sm font-semibold text-primary"><a href="/contact" className="underline underline-offset-4">{blackFridayPromo.referral}</a></p>
         </div>
       </section>
 
@@ -53,6 +54,7 @@ function PricingPage() {
                 <p className="mt-1 font-semibold text-muted-foreground">{m.freq}</p>
                 <p className="mt-4"><span className="font-serif text-4xl text-navy">{m.monthly}</span><span className="text-muted-foreground"> /month</span></p>
                 <p className="mt-1 text-sm text-muted-foreground"><strong className="text-foreground">{m.annual}/month</strong> with an annual commitment</p>
+                <PromoBadge>{blackFridayPromo.annual}</PromoBadge>
                 <div className="mt-auto pt-6"><PillLink href={m.href} className="w-full">Join {m.name}</PillLink></div>
               </article>
             ))}
