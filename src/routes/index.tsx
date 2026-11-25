@@ -34,26 +34,6 @@ function Home() {
   const { classes, introOffer, packages, memberships, privates, coachingReset } = useContent();
   return (
     <>
-      {/* Black Friday Week specials */}
-      <section aria-labelledby="black-friday" className="bg-peri-tint py-10 md:py-14">
-        <div className="container-site">
-          <div className="text-center">
-            <p className="eyebrow text-primary">Limited time</p>
-            <h2 id="black-friday" className="mt-2 text-3xl md:text-5xl">Black Friday Week <em className="font-normal italic">Specials</em></h2>
-            <p className="mt-2 font-semibold text-muted-foreground">Offers end 11/30</p>
-          </div>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {blackFridaySpecials.map((s) => (
-              <article key={s.title} className="flex flex-col rounded-[20px] border bg-card p-6 shadow-soft">
-                <h3 className="text-xl">{s.title}</h3>
-                <p className="mt-1 font-serif text-2xl italic text-primary">{s.accent}</p>
-                <div className="mt-auto pt-5"><PillLink href={s.href} className="w-full">{s.cta}</PillLink></div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
         <img src={photos.studio} alt="Reformer studio at All In Health & Wellness in Babylon, NY" className="absolute inset-0 -z-20 size-full object-cover" fetchPriority="high" />
@@ -78,6 +58,28 @@ function Home() {
             <p className="mt-2 text-sm text-muted-foreground">Try Total Body Reformer and Interval Training before you commit.</p>
             <PillLink href={glofox.memberships} className="mt-5 w-full">Claim intro offer</PillLink>
           </aside>
+        </div>
+      </section>
+
+      {/* Black Friday Week specials */}
+      <section aria-labelledby="black-friday" className="section-y pb-0">
+        <div className="container-site">
+          <div className="rounded-[22px] border bg-card p-8 shadow-soft md:p-12">
+            <div className="text-center">
+              <p className="eyebrow text-primary">Limited time</p>
+              <h2 id="black-friday" className="mt-2 text-3xl md:text-5xl">Black Friday Week <em className="font-normal italic">Specials</em></h2>
+              <p className="mt-2 font-semibold text-muted-foreground">Offers end 11/30</p>
+            </div>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {blackFridaySpecials.map((s) => (
+                <div key={s.title} className="border-l-2 border-primary/40 pl-4">
+                  <h3 className="text-xl">{s.title}</h3>
+                  <p className="mt-1 font-serif text-2xl italic text-primary">{s.accent}</p>
+                  <PillLink href={s.href} variant="outline" className="mt-3 py-1.5 text-xs">{s.cta}</PillLink>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
