@@ -36,6 +36,13 @@
       "when": 1795547729098,
       "tag": "0004_remove_public_site_media_read",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795582477743,
+      "tag": "0005_lock_down_role_check_and_site_content_reads",
+      "breakpoints": true
     }
   ]
 }
