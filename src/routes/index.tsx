@@ -21,11 +21,39 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+const blackFridaySpecials = [
+  { title: "Purchase an annual membership", accent: "Get your 12th month free", href: glofox.memberships, cta: "Join annual" },
+  { title: "Get 3 classes", accent: "For $79", href: glofox.memberships, cta: "Claim offer" },
+  { title: "30 Day Reset", accent: "For $299", href: "/coaching", cta: "Start the Reset" },
+  { title: "Buy a 10 or 20 pack", accent: "Get 3 classes free", href: glofox.memberships, cta: "Buy a pack" },
+  { title: "Refer a friend", accent: "Get 1 free class and raffle entry", href: "/contact", cta: "Refer a friend" },
+];
+
 function Home() {
   const { data: igPosts } = useSuspenseQuery(igQuery);
   const { classes, introOffer, packages, memberships, privates, coachingReset } = useContent();
   return (
     <>
+      {/* Black Friday Week specials */}
+      <section aria-labelledby="black-friday" className="bg-peri-tint py-10 md:py-14">
+        <div className="container-site">
+          <div className="text-center">
+            <p className="eyebrow text-primary">Limited time</p>
+            <h2 id="black-friday" className="mt-2 text-3xl md:text-5xl">Black Friday Week <em className="font-normal italic">Specials</em></h2>
+            <p className="mt-2 font-semibold text-muted-foreground">Offers end 11/30</p>
+          </div>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {blackFridaySpecials.map((s) => (
+              <article key={s.title} className="flex flex-col rounded-[20px] border bg-card p-6 shadow-soft">
+                <h3 className="text-xl">{s.title}</h3>
+                <p className="mt-1 font-serif text-2xl italic text-primary">{s.accent}</p>
+                <div className="mt-auto pt-5"><PillLink href={s.href} className="w-full">{s.cta}</PillLink></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-navy text-navy-foreground">
         <img src={photos.studio} alt="Reformer studio at All In Health & Wellness in Babylon, NY" className="absolute inset-0 -z-20 size-full object-cover" fetchPriority="high" />
