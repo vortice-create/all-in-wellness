@@ -14,9 +14,11 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BookingRouteImport } from './routes/booking'
 import { Route as ClassesRouteImport } from './routes/classes'
 import { Route as CoachingRouteImport } from './routes/coaching'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -46,6 +48,11 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookingRoute = BookingRouteImport.update({
+  id: '/booking',
+  path: '/booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClassesRoute = ClassesRouteImport.update({
   id: '/classes',
   path: '/classes',
@@ -59,6 +66,11 @@ const CoachingRoute = CoachingRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -87,9 +99,11 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
   '/auth': typeof AuthRoute
+  '/booking': typeof BookingRoute
   '/classes': typeof ClassesRoute
   '/coaching': typeof CoachingRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
   '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
   '/admin': typeof AuthenticatedAdminRoute
@@ -100,9 +114,11 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
   '/auth': typeof AuthRoute
+  '/booking': typeof BookingRoute
   '/classes': typeof ClassesRoute
   '/coaching': typeof CoachingRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
   '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
   '/admin': typeof AuthenticatedAdminRoute
@@ -115,9 +131,11 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
   '/auth': typeof AuthRoute
+  '/booking': typeof BookingRoute
   '/classes': typeof ClassesRoute
   '/coaching': typeof CoachingRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
   '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
@@ -130,9 +148,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/accessibility'
     | '/auth'
+    | '/booking'
     | '/classes'
     | '/coaching'
     | '/contact'
+    | '/contact-us'
     | '/pricing'
     | '/reset-password'
     | '/admin'
@@ -143,9 +163,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/accessibility'
     | '/auth'
+    | '/booking'
     | '/classes'
     | '/coaching'
     | '/contact'
+    | '/contact-us'
     | '/pricing'
     | '/reset-password'
     | '/admin'
@@ -157,9 +179,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/accessibility'
     | '/auth'
+    | '/booking'
     | '/classes'
     | '/coaching'
     | '/contact'
+    | '/contact-us'
     | '/pricing'
     | '/reset-password'
     | '/_authenticated/admin'
@@ -172,9 +196,11 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AccessibilityRoute: typeof AccessibilityRoute
   AuthRoute: typeof AuthRoute
+  BookingRoute: typeof BookingRoute
   ClassesRoute: typeof ClassesRoute
   CoachingRoute: typeof CoachingRoute
   ContactRoute: typeof ContactRoute
+  ContactUsRoute: typeof ContactUsRoute
   PricingRoute: typeof PricingRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   ApiPublicMediaSplatRoute: typeof ApiPublicMediaSplatRoute
@@ -217,6 +243,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/booking': {
+      id: '/booking'
+      path: '/booking'
+      fullPath: '/booking'
+      preLoaderRoute: typeof BookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/classes': {
       id: '/classes'
       path: '/classes'
@@ -236,6 +269,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -286,9 +326,11 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AccessibilityRoute: AccessibilityRoute,
   AuthRoute: AuthRoute,
+  BookingRoute: BookingRoute,
   ClassesRoute: ClassesRoute,
   CoachingRoute: CoachingRoute,
   ContactRoute: ContactRoute,
+  ContactUsRoute: ContactUsRoute,
   PricingRoute: PricingRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   ApiPublicMediaSplatRoute: ApiPublicMediaSplatRoute,
