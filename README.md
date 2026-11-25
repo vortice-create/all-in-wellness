@@ -27,7 +27,7 @@ Layout: centered 1140px maximum container, 28px desktop gutters, approximately 8
 
 Hero: use the actual studio photo with this starting overlay:
 linear-gradient(165deg, rgba(35,44,72,.78) 0%, rgba(79,85,184,.52) 55%, rgba(33,43,51,.68) 100%).
-Include one H1 with the business, Reformer Pilates and Babylon clear in the opening content. Make the confirmed intro offer prominent: 3 classes for $99, used within 2 weeks. Primary button label: Book now. Secondary: Explore classes. Do not let an oversized hero bury the offer on mobile.
+Include one H1 with the business, Reformer Pilates and Babylon clear in the opening content. Make the confirmed intro offer prominent: 3 classes for $79, used within 2 weeks (offer ends 11/30). Primary button label: Book now. Secondary: Explore classes. Do not let an oversized hero bury the offer on mobile.
 
 Build the homepage in this order:
 1. Consistent header with logo, Classes, Pricing, Coaching, About, Contact and Book now.
@@ -44,7 +44,7 @@ Build the homepage in this order:
 
 Supporting routes:
 - Classes & Schedule (/classes): class types, what to bring, and live Glofox timetable embed / direct booking links.
-- Pricing & Memberships (/pricing): clear tiers for Intro Offer ($99 for 3 classes), Class Packages (10 for $430, 20 for $790, single class $45), Memberships (Wellness Starter 4x/mo at $160 or $140/yr, Signature 8x/mo at $300 or $270/yr, Elite 12x/mo at $360 or $330/yr), Private Reformer Sessions ($130 single, $336 3-pack), and PT Evaluation ($250). Connect each package to Glofox purchase flow.
+- Pricing & Memberships (/pricing): clear tiers for Intro Offer ($79 for 3 classes, ends 11/30), Class Packages (10 for $430, 20 for $790, single class $45), Memberships (Wellness Starter 4x/mo at $160 or $140/yr, Signature 8x/mo at $300 or $270/yr, Elite 12x/mo at $360 or $330/yr), Private Reformer Sessions ($130 single, $336 3-pack), and PT Evaluation ($250). Connect each package to Glofox purchase flow.
 - Coaching (/coaching): focused on the 30-Day Reset ($299). Keep the $99 add-on out of public pricing until approved.
 - About Us (/about): Dr. Judi Luttieri's background, philosophy, studio story in Babylon, credentials.
 - Contact (/contact): 1 Shore Road, Babylon, NY 11702, phone (631) 213-5115, email info@allinhealth.net, contact form, map, parking directions.

@@ -2,10 +2,11 @@ import { describe, it, expect } from "vitest";
 import { introOffer, packages, memberships, privates, coachingReset, glofox, cancellationPolicy } from "@/lib/site";
 
 describe("published prices", () => {
-  it("intro offer is 3 classes for $99 within 2 weeks", () => {
-    expect(introOffer.price).toBe("$99");
+  it("intro offer is 3 classes for $79 within 2 weeks, ends 11/30", () => {
+    expect(introOffer.price).toBe("$79");
     expect(introOffer.note).toContain("3 classes");
     expect(introOffer.note).toContain("2 weeks");
+    expect(introOffer.note).toContain("11/30");
   });
   it("class packages", () => {
     expect(packages.map((p) => p.price)).toEqual(["$45", "$430", "$790"]);

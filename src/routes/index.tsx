@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
   head: () =>
     pageHead({
       title: "Reformer Pilates in Babylon, NY | All In Health & Wellness",
-      description: "Reformer Pilates and interval training in Babylon, NY, led by Dr. Judi Luttieri, DPT. New clients: 3 classes for $99. Book online today.",
+      description: "Reformer Pilates and interval training in Babylon, NY, led by Dr. Judi Luttieri, DPT. New clients: 3 classes for $79. Book online today.",
       path: "/",
       image: photos.share,
       scripts: [ld(businessJsonLd()), ld(faqJsonLd())],
@@ -44,8 +44,9 @@ function Home() {
           </div>
           <aside aria-label="Intro offer" className="rounded-[20px] bg-background p-6 text-foreground shadow-soft">
             <p className="eyebrow text-primary">New client intro offer</p>
-            <p className="mt-2 font-serif text-5xl text-navy">$99</p>
+            <p className="mt-2 font-serif text-5xl text-navy">$79</p>
             <p className="mt-1 font-semibold">3 classes, used within 2 weeks</p>
+            <p className="mt-1 text-sm font-semibold text-primary">Offer ends 11/30</p>
             <p className="mt-2 text-sm text-muted-foreground">Try Total Body Reformer and Interval Training before you commit.</p>
             <PillLink href={glofox.memberships} className="mt-5 w-full">Claim intro offer</PillLink>
           </aside>

@@ -228,8 +228,8 @@ export function BookingCTA() {
       <div className="container-site">
         <div className="cta-gradient relative isolate overflow-hidden rounded-[22px] px-6 py-14 text-center text-navy-foreground md:px-16">
           <p className="eyebrow text-mint">Your first step</p>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl md:text-5xl">Three classes. Two weeks. <em className="font-normal italic">$99.</em></h2>
-          <p className="mx-auto mt-4 max-w-lg text-navy-foreground/85">Try Reformer Pilates and Interval Training in Babylon with expert, physical-therapy-informed guidance.</p>
+          <h2 className="mx-auto mt-3 max-w-2xl text-3xl md:text-5xl">Three classes. Two weeks. <em className="font-normal italic">$79.</em></h2>
+          <p className="mx-auto mt-4 max-w-lg text-navy-foreground/85">Try Reformer Pilates and Interval Training in Babylon with expert, physical-therapy-informed guidance. Offer ends 11/30.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <PillLink href={glofox.memberships} variant="light">Book now</PillLink>
             <PillLink href="/classes" variant="ghostLight">See the schedule</PillLink>

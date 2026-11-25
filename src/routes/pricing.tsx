@@ -8,11 +8,11 @@ export const Route = createFileRoute("/pricing")({
   head: () =>
     pageHead({
       title: "Pilates Pricing & Memberships | All In Health & Wellness Babylon",
-      description: "Intro offer: 3 classes for $99. Class packs from $45, memberships from $140/mo, private Reformer sessions and PT evaluations in Babylon, NY.",
+      description: "Intro offer: 3 classes for $79 (ends 11/30). Class packs from $45, memberships from $140/mo, private Reformer sessions and PT evaluations in Babylon, NY.",
       path: "/pricing",
       image: photos.share,
       scripts: [
-        ld(serviceJsonLd("Intro Offer — 3 Reformer classes", "Three classes for new clients, used within 2 weeks.", "$99")),
+        ld(serviceJsonLd("Intro Offer — 3 Reformer classes", "Three classes for new clients, used within 2 weeks. Offer ends 11/30.", "$79")),
         ld(serviceJsonLd("Private Reformer Session", "One-on-one Reformer Pilates instruction.", "$130")),
         ld(serviceJsonLd("Physical Therapy Evaluation", "Assessment with Dr. Judi Luttieri, DPT.", "$250")),
       ],

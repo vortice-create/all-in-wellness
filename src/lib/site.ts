@@ -44,7 +44,7 @@ export const photos = {
 
 export type Plan = { name: string; price: string; note: string; detail?: string; href: string; cta: string };
 
-export const introOffer: Plan = { name: "Intro Offer", price: "$99", note: "3 classes · use within 2 weeks", detail: "New clients only. Try Reformer and Interval classes.", href: glofox.memberships, cta: "Claim intro offer" };
+export const introOffer: Plan = { name: "Intro Offer", price: "$79", note: "3 classes · use within 2 weeks · offer ends 11/30", detail: "New clients only. Try Reformer and Interval classes.", href: glofox.memberships, cta: "Claim intro offer" };
 
 export const packages: Plan[] = [
   { name: "Single class", price: "$45", note: "1 Reformer or Interval class", href: glofox.memberships, cta: "Buy single" },
@@ -80,7 +80,7 @@ export const reviews = [
 
 export const faqs = [
   { q: "Is Reformer Pilates OK for complete beginners?", a: "Yes. Every class is taught for all levels, and instructors offer modifications. Led by Dr. Judi Luttieri, a Doctor of Physical Therapy, the studio is a supportive, no-judgment space for first-timers." },
-  { q: "How much is the intro offer?", a: "New clients get 3 classes for $99, to be used within 2 weeks. After that, single classes are $45, or choose a class pack or membership." },
+  { q: "How much is the intro offer?", a: "New clients get 3 classes for $79, to be used within 2 weeks — offer ends 11/30. After that, single classes are $45, or choose a class pack or membership." },
   { q: "Where is the studio?", a: "All In Health & Wellness is at 1 Shore Road, Babylon, NY 11702. Call (631) 213-5115 if you need help finding us." },
   { q: "Where do I park?", a: "Call the studio at (631) 213-5115 before your first visit and we'll walk you through the best parking options near 1 Shore Road." },
   { q: "What should I wear and bring?", a: "Wear comfortable, fitted workout clothing you can move in, and bring a water bottle. Arrive about 10 minutes early for your first class so we can set you up on the Reformer." },
