@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BookingRouteImport } from './routes/booking'
@@ -21,7 +22,9 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ShopRouteImport } from './routes/shop'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as ShopSplatRouteImport } from './routes/shop.$'
 import { Route as ApiPublicMediaSplatRouteImport } from './routes/api/public/media/$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -36,6 +39,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccessibilityRoute = AccessibilityRouteImport.update({
@@ -83,10 +91,20 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const ShopSplatRoute = ShopSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => ShopRoute,
 } as any)
 const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
   id: '/api/public/media/$',
@@ -97,6 +115,7 @@ const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-us': typeof AboutUsRoute
   '/accessibility': typeof AccessibilityRoute
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
@@ -106,12 +125,15 @@ export interface FileRoutesByFullPath {
   '/contact-us': typeof ContactUsRoute
   '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/shop': typeof ShopRouteWithChildren
   '/admin': typeof AuthenticatedAdminRoute
+  '/shop/$': typeof ShopSplatRoute
   '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-us': typeof AboutUsRoute
   '/accessibility': typeof AccessibilityRoute
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
@@ -121,7 +143,9 @@ export interface FileRoutesByTo {
   '/contact-us': typeof ContactUsRoute
   '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/shop': typeof ShopRouteWithChildren
   '/admin': typeof AuthenticatedAdminRoute
+  '/shop/$': typeof ShopSplatRoute
   '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesById {
@@ -129,6 +153,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/about-us': typeof AboutUsRoute
   '/accessibility': typeof AccessibilityRoute
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
@@ -138,7 +163,9 @@ export interface FileRoutesById {
   '/contact-us': typeof ContactUsRoute
   '/pricing': typeof PricingRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/shop': typeof ShopRouteWithChildren
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/shop/$': typeof ShopSplatRoute
   '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRouteTypes {
@@ -146,6 +173,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/about-us'
     | '/accessibility'
     | '/auth'
     | '/booking'
@@ -155,12 +183,15 @@ export interface FileRouteTypes {
     | '/contact-us'
     | '/pricing'
     | '/reset-password'
+    | '/shop'
     | '/admin'
+    | '/shop/$'
     | '/api/public/media/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/about-us'
     | '/accessibility'
     | '/auth'
     | '/booking'
@@ -170,13 +201,16 @@ export interface FileRouteTypes {
     | '/contact-us'
     | '/pricing'
     | '/reset-password'
+    | '/shop'
     | '/admin'
+    | '/shop/$'
     | '/api/public/media/$'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/about'
+    | '/about-us'
     | '/accessibility'
     | '/auth'
     | '/booking'
@@ -186,7 +220,9 @@ export interface FileRouteTypes {
     | '/contact-us'
     | '/pricing'
     | '/reset-password'
+    | '/shop'
     | '/_authenticated/admin'
+    | '/shop/$'
     | '/api/public/media/$'
   fileRoutesById: FileRoutesById
 }
@@ -194,6 +230,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AboutUsRoute: typeof AboutUsRoute
   AccessibilityRoute: typeof AccessibilityRoute
   AuthRoute: typeof AuthRoute
   BookingRoute: typeof BookingRoute
@@ -203,6 +240,7 @@ export interface RootRouteChildren {
   ContactUsRoute: typeof ContactUsRoute
   PricingRoute: typeof PricingRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+  ShopRoute: typeof ShopRouteWithChildren
   ApiPublicMediaSplatRoute: typeof ApiPublicMediaSplatRoute
 }
 
@@ -227,6 +265,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/accessibility': {
@@ -292,12 +337,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/shop/$': {
+      id: '/shop/$'
+      path: '/$'
+      fullPath: '/shop/$'
+      preLoaderRoute: typeof ShopSplatRouteImport
+      parentRoute: typeof ShopRoute
     }
     '/api/public/media/$': {
       id: '/api/public/media/$'
@@ -320,10 +379,21 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface ShopRouteChildren {
+  ShopSplatRoute: typeof ShopSplatRoute
+}
+
+const ShopRouteChildren: ShopRouteChildren = {
+  ShopSplatRoute: ShopSplatRoute,
+}
+
+const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AboutUsRoute: AboutUsRoute,
   AccessibilityRoute: AccessibilityRoute,
   AuthRoute: AuthRoute,
   BookingRoute: BookingRoute,
@@ -333,6 +403,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactUsRoute: ContactUsRoute,
   PricingRoute: PricingRoute,
   ResetPasswordRoute: ResetPasswordRoute,
+  ShopRoute: ShopRouteWithChildren,
   ApiPublicMediaSplatRoute: ApiPublicMediaSplatRoute,
 }
 export const routeTree = rootRouteImport
